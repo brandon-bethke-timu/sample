@@ -1,0 +1,32 @@
+name: Dart Format Check
+
+on:
+  push:
+    branches:
+      - '**'  # Run this action on pushes to any branch
+
+jobs:
+  format_check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 'stable'
+
+      - name: Run dart format
+        run: dart format --set-exit-if-changed .
+
+      - name: Check for formatting issues
+        run: |
+          if git diff --exit-code; then
+            echo "All files are properly formatted."
+          else
+            echo "Some files need formatting. Please run 'dart format .' and commit the changes."
+            exit 1
+          fi
+
