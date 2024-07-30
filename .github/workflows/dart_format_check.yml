@@ -30,3 +30,7 @@ jobs:
             exit 1
           fi
 
+      - name: create pull request
+        run: gh pr create -B main -H $GITHUB_REF_NAME --title 'Merge $GITHUB_REF_NAME into main' --body 'Created by Github action'
+        env:
+            GITHUB_TOKEN: ${{ secrets.POWERBOARDS_REPO_ACCESS_TOKEN }}
