@@ -1,9 +1,9 @@
 name: Dart Format Check
 
+
 on:
-  push:
-    branches:
-      - 'brandon'  # Run this action on pushes to any branch
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   format_check:
