@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   check-dart-formatting:
-    runs-on: my-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Get code
       uses: actions/checkout@v4
