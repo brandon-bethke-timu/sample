@@ -1,13 +1,17 @@
 name: Dart Format Check
 
+
 on:
-  push:
-    branches:
-      - '**'  # Run this action on pushes to any branch
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   format_check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
 
     steps:
       - name: Checkout code
@@ -29,4 +33,3 @@ jobs:
             echo "Some files need formatting. Please run 'dart format .' and commit the changes."
             exit 1
           fi
-
