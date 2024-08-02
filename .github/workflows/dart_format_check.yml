@@ -26,4 +26,4 @@ jobs:
       run: |
         # Run dart format and check for unformatted files
         echo "Running dart format..."
-        dart format -o none --set-exit-if-changed powerboards/lib
+        dart format -o none --set-exit-if-changed .
