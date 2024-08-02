@@ -33,8 +33,3 @@ jobs:
             echo "Some files need formatting. Please run 'dart format .' and commit the changes."
             exit 1
           fi
-
-      - name: create pull request
-        run: gh pr create -B main -H $GITHUB_REF_NAME --title 'Merge $GITHUB_REF_NAME into main' --body 'Created by Github action'
-        env:
-          GH_TOKEN: ${{ github.token }}
