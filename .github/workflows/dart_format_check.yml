@@ -3,7 +3,7 @@ name: Dart Format Check
 on:
   push:
     branches:
-      - '**'  # Run this action on pushes to any branch
+      - 'brandon'  # Run this action on pushes to any branch
 
 jobs:
   format_check:
@@ -12,7 +12,7 @@ jobs:
       contents: write
       pull-requests: write
       repository-projects: write
-      
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
