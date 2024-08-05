@@ -3,16 +3,11 @@ name: Dart Format Check
 
 on:
   pull_request:
-    types: [opened, synchronize]
 
 jobs:
   format_check:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      repository-projects: write
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,12 +19,3 @@ jobs:
 
       - name: Run dart format
         run: dart format --set-exit-if-changed .
-
-      - name: Check for formatting issues
-        run: |
-          if git diff --exit-code; then
-            echo "All files are properly formatted."
-          else
-            echo "Some files need formatting. Please run 'dart format .' and commit the changes."
-            exit 1
-          fi
