@@ -1,14 +1,19 @@
-name: Dart Format Check
-
+name: Check Dart Formatting
 
 on:
+  # Manual Trigger
+  workflow_dispatch:
+
   pull_request:
   merge_group:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head.ref }}
+  cancel-in-progress: false
+
 jobs:
   format_check:
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
