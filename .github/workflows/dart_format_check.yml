@@ -3,6 +3,7 @@ name: Dart Format Check
 
 on:
   pull_request:
+  merge_group:
 
 jobs:
   format_check:
