@@ -1,35 +1,29 @@
-name: Dart Format Check
-
+name: Check Dart Formatting
 
 on:
+  # Manual Trigger
+  workflow_dispatch:
+
   pull_request:
     types: [opened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head.ref }}
+  cancel-in-progress: false
 
 jobs:
   format_check:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      repository-projects: write
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Get code
+      uses: actions/checkout@v4
+    - name: Set up Dart
+      uses: dart-lang/setup-dart@v1
+      with:
+        sdk: 'stable'
 
-      - name: Set up Dart
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: 'stable'
-
-      - name: Run dart format
-        run: dart format --set-exit-if-changed .
-
-      - name: Check for formatting issues
-        run: |
-          if git diff --exit-code; then
-            echo "All files are properly formatted."
-          else
-            echo "Some files need formatting. Please run 'dart format .' and commit the changes."
-            exit 1
-          fi
+    - name: dart format
+      run: |
+        # Run dart format and check for unformatted files
+        echo "Running dart format..."
+        dart format -o none --set-exit-if-changed .
