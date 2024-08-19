@@ -10,12 +10,11 @@ concurrency:
 
 jobs:
   hello_world:
-  format_check:
     runs-on: ubuntu-latest    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Hello World
-        run: |
-          echo "hello world"
+    - name: Hello World
+      run: |
+        echo "hello world"
