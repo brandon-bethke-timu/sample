@@ -4,6 +4,10 @@ on:
   # Manual Trigger
   workflow_dispatch:
 
+  push:
+    branches:
+    - blooby
+  
 concurrency:
   group: ${{ github.workflow }}-${{ github.head.ref }}
   cancel-in-progress: false
