@@ -27,6 +27,6 @@ jobs:
         cd ..
         MY_ROOT=`pwd`
         mkdir -p ${MY_ROOT}/my-flutter/engine
-        cp ${GITHUB_WORKSPACE} ${MY_ROOT}/my-flutter/
+        cp -r ${GITHUB_WORKSPACE} ${MY_ROOT}/my-flutter/
         mv ${MY_ROOT}/my-flutter/sample ${MY_ROOT}/my-flutter/engine
         ls -al ${MY_ROOT}/my-flutter/engine
