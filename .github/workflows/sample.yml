@@ -23,3 +23,9 @@ jobs:
       run: |
         echo "hello world"
         echo ${GITHUB_WORKSPACE}
+
+        cd ..
+        MY_ROOT=`pwd`
+        mkdir -p ${MY_ROOT}/my-flutter/engine
+        mv ${GITHUB_WORKSPACE} ${MY_ROOT}/my-flutter/engine
+        ls -al ${MY_ROOT}/my-flutter/engine
